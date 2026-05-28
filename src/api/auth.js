@@ -38,7 +38,7 @@ function normalizeAuthResponse(res) {
 }
 
 export const authApi = {
-   async register(payload) {
+  async register(payload) {
     const res = await http.post("/auth/register", payload);
     return normalizeAuthResponse(res);
   },
@@ -62,8 +62,6 @@ export const authApi = {
     const res = await http.post("/auth/google", payload);
     return normalizeAuthResponse(res);
   },
-
-
 
   // request reset link
   async forgotPassword(email) {
