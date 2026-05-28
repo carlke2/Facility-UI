@@ -56,7 +56,7 @@ export default function MyBookings() {
     setLoading(true);
     try {
       const data = await bookingsApi.mine();
-      const bookings = data?.bookings || [];
+      const bookings = Array.isArray(data) ? data : data?.bookings || [];
       // hide cancelled in UI
       setItems(bookings.filter((b) => b.status !== "CANCELLED"));
     } catch (e) {

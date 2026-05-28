@@ -3,7 +3,7 @@ import { http } from "../lib/http";
 export const roomsApi = {
   async list() {
     const { data } = await http.get("/rooms");
-    return data?.rooms || [];
+    return Array.isArray(data) ? data : data?.rooms || [];
   },
 
   async create(payload) {

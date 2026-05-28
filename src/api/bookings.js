@@ -25,11 +25,18 @@ export const bookingsApi = {
 
   async mine() {
     const { data } = await http.get("/bookings/mine");
-    return data;
+    const arr = Array.isArray(data) ? data : data?.bookings || [];
+    return arr.map((b) => ({
+      ...b,
+      startAt: b.startAt || b.startTime,
+      endAt: b.endAt || b.endTime,
+      meetingTitle: b.meetingTitle || b.title,
+      roomId: typeof b.roomId === "object" ? b.roomId : b.room || b.roomId,
+    }));
   },
 
   async cancel(id) {
-    const { data } = await http.delete(`/bookings/${id}`);
+    const { data } = await http.patch(`/bookings/${id}/cancel`);
     return data;
   },
 
