@@ -45,6 +45,7 @@ function getPageTitle(pathname) {
     { re: /^\/app\/my-bookings/, title: "My Bookings" },
     { re: /^\/app\/rooms/, title: "Rooms" },
     { re: /^\/app\/reminders/, title: "Reminders" },
+    { re: /^\/app\/tickets/, title: "Support Tickets" },
 
     { re: /^\/app\/?$/, title: "Dashboard" },
   ];
@@ -111,6 +112,7 @@ export default function AppShell() {
               <SideLink to="/app/my-bookings">My Bookings</SideLink>
               <SideLink to="/app/rooms">Rooms</SideLink>
               <SideLink to="/app/reminders">Reminders</SideLink>
+              <SideLink to="/app/tickets">Tickets</SideLink>
             </div>
 
             {isAdmin ? (

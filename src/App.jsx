@@ -15,6 +15,7 @@ import Timeline from "./pages/Timeline";
 import Reminders from "./pages/Reminders";
 import Rooms from "./pages/Rooms";
 import MyBookings from "./pages/MyBookings";
+import Tickets from "./pages/Tickets";
 
 import AdminRooms from "./pages/AdminRooms";
 import AdminSchedule from "./pages/AdminSchedule";
@@ -68,6 +69,7 @@ export default function App() {
             <Route path="my-bookings" element={<MyBookings />} />
             <Route path="rooms" element={<Rooms />} />
             <Route path="reminders" element={<Reminders />} />
+            <Route path="tickets" element={<Tickets />} />
 
             {/* Admin */}
             <Route path="admin" element={<AdminRoute />}>
