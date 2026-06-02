@@ -100,33 +100,57 @@ export default function AppShell() {
     <div className="min-h-screen bg-[rgb(var(--bg))] text-[rgb(var(--text))]">
       <div className="mx-auto max-w-6xl px-3 sm:px-4 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-4 sm:gap-6">
         {/* SIDEBAR */}
-        <aside className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-3 h-fit shadow-soft">
+        <aside className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-3 h-fit shadow-soft flex flex-col justify-between" style={{ minHeight: "calc(100vh - 3rem)" }}>
           <div className="flex flex-col">
-            <div className="px-3 py-2 text-sm sm:text-xs font-semibold text-[rgb(var(--muted))]">
-              MENU
+            {/* BRAND LOGO */}
+            <div className="flex items-center gap-3 px-3 py-4 mb-4 border-b border-[rgb(var(--border))]/40">
+              <div className="h-10 w-10 shrink-0 rounded-xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-red-950/40">
+                M
+              </div>
+              <div className="leading-tight">
+                <div className="text-xs font-black uppercase tracking-wider text-white">Millenium</div>
+                <div className="text-[10px] font-bold text-red-500 uppercase tracking-widest">Solutions</div>
+              </div>
             </div>
 
             <div className="space-y-1">
               <SideLink to="/app">Dashboard</SideLink>
-              <SideLink to="/app/timeline">Day View</SideLink>
-              <SideLink to="/app/my-bookings">My Bookings</SideLink>
-              <SideLink to="/app/rooms">Rooms</SideLink>
-              <SideLink to="/app/reminders">Reminders</SideLink>
               <SideLink to="/app/tickets">Tickets</SideLink>
+              <SideLink to="/app/my-bookings">Facility Booking</SideLink>
+              <SideLink to="/app/timeline">Calendar</SideLink>
+              <SideLink to="/app/rooms">Rooms</SideLink>
+              <SideLink to="/app/assets">Assets</SideLink>
+              <SideLink to="/app/reminders">Approvals</SideLink>
+              <SideLink to="/app/admin/activity">Reports</SideLink>
+              <SideLink to="/app/settings">Settings</SideLink>
             </div>
 
             {isAdmin ? (
               <>
-                <div className="mt-4 px-3 py-2 text-sm sm:text-xs font-semibold text-[rgb(var(--muted))]">
-                  ADMIN
+                <div className="mt-6 px-3 py-2 text-[10px] font-bold tracking-widest uppercase text-[rgb(var(--muted))] border-t border-[rgb(var(--border))]/40">
+                  Admin System
                 </div>
                 <div className="space-y-1">
                   <SideLink to="/app/admin/schedule">Full Schedule</SideLink>
                   <SideLink to="/app/admin/rooms">Manage Rooms</SideLink>
-                  <SideLink to="/app/admin/activity">Activity Logs</SideLink>
                 </div>
               </>
             ) : null}
+          </div>
+
+          {/* BOTTOM SUPPORT WIDGET */}
+          <div className="mt-8 p-4 rounded-2xl border border-[rgb(var(--border))]/50 bg-[rgb(var(--bg-alt))]/60 text-center space-y-3">
+            <div className="h-8 w-8 rounded-full bg-red-500/10 text-red-500 grid place-items-center mx-auto text-sm font-bold">
+              🎧
+            </div>
+            <div className="text-[11px] font-bold text-white">Need Support?</div>
+            <div className="text-[9px] text-[rgb(var(--text-muted))]">Our team is ready<br/>to help you.</div>
+            <Button onClick={() => nav("/app/tickets")} className="w-full py-1.5 rounded-xl text-[10px] uppercase font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-white">
+              Contact Support
+            </Button>
+            <div className="text-[8px] text-[rgb(var(--text-muted))] pt-2">
+              © 2025 Millenium Solutions EA<br/>All rights reserved.
+            </div>
           </div>
         </aside>
 

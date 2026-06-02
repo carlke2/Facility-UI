@@ -9,13 +9,13 @@
 */
 
 :root {
-  /* Backgrounds — Deep charcoal-navy palette */
-  --bg:              17 17 21;         /* #111115 — deepest base */
-  --bg-alt:          22 22 28;         /* #16161c — slight lift */
-  --surface:         28 28 36;         /* #1c1c24 — card surfaces */
-  --surface-hover:   36 36 46;         /* #24242e */
-  --surface-active:  44 44 56;         /* #2c2c38 */
-  --surface-raised:  50 50 62;         /* #32323e — elevated */
+  /* Backgrounds — Deep slate-navy palette matching screenshot */
+  --bg:              11 14 20;         /* #0B0E14 — deepest base */
+  --bg-alt:          15 19 28;         /* #0F131C — slight lift */
+  --surface:         19 25 38;         /* #131926 — card surfaces */
+  --surface-hover:   25 32 48;         /* #192030 */
+  --surface-active:  31 40 59;         /* #1F283B */
+  --surface-raised:  38 48 70;         /* #263046 */
 
   /* Text Colors */
   --text-primary:    245 245 248;      /* near white */
@@ -23,35 +23,35 @@
   --text-muted:      100 103 118;      /* dimmed */
   --text-dark:       30 30 38;         /* for light-bg usage */
 
-  /* Brand — Odoo warm plum purple */
-  --brand:           113 75 103;       /* #714B67 */
-  --brand-hover:     133 88 120;       /* lighter plum hover */
-  --brand-deep:      88 55 78;         /* deeper plum */
-  --brand-soft:      113 75 103;       /* same base for alpha usage */
+  /* Brand — Crimson Red */
+  --brand:           194 23 46;        /* #C2172E */
+  --brand-hover:     219 28 54;        /* lighter hover crimson */
+  --brand-deep:      140 15 32;        /* deeper red */
+  --brand-soft:      194 23 46;        /* alpha base */
 
   /* Secondary accent — warm amber/orange */
   --accent:          214 155 60;       /* warm gold */
   --accent-hover:    230 170 70;
 
   /* Semantic */
-  --danger:          220 53 69;
-  --danger-hover:    195 45 58;
-  --success:         40 167 69;
-  --success-soft:    40 167 69;
-  --warning:         255 193 7;
-  --info:            0 123 255;
+  --danger:          239 68 68;
+  --danger-hover:    220 38 38;
+  --success:         34 197 94;
+  --success-soft:    34 197 94;
+  --warning:         234 179 8;
+  --info:            59 130 246;
 
   /* Borders */
-  --border:          42 42 54;         /* subtle border */
-  --border-light:    58 58 72;         /* brighter border */
-  --border-accent:   113 75 103;       /* brand border */
+  --border:          30 38 54;         /* subtle border */
+  --border-light:    44 54 75;         /* brighter border */
+  --border-accent:   194 23 46;        /* brand border */
 
   /* Shadows */
   --shadow-sm:   0 1px 3px 0 rgb(0 0 0 / 0.12);
   --shadow-md:   0 4px 12px -2px rgb(0 0 0 / 0.20);
   --shadow-lg:   0 8px 24px -4px rgb(0 0 0 / 0.25);
   --shadow-xl:   0 16px 48px -8px rgb(0 0 0 / 0.30);
-  --shadow-glow: 0 0 40px -10px rgb(113 75 103 / 0.3);
+  --shadow-glow: 0 0 40px -10px rgb(194 23 46 / 0.3);
 
   /* Feature icon colors */
   --icon-blue:    59 130 246;
