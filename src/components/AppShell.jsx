@@ -115,17 +115,54 @@ export default function AppShell() {
 
             <div className="space-y-1">
               <SideLink to="/app">Dashboard</SideLink>
-              <SideLink to="/app/tickets">Tickets</SideLink>
-              <SideLink to="/app/my-bookings">Facility Booking</SideLink>
-              <SideLink to="/app/timeline">Calendar</SideLink>
-              <SideLink to="/app/rooms">Rooms</SideLink>
-              <SideLink to="/app/assets">Assets</SideLink>
-              <SideLink to="/app/reminders">Approvals</SideLink>
-              <SideLink to="/app/admin/activity">Reports</SideLink>
-              <SideLink to="/app/settings">Settings</SideLink>
+              
+              {roleLabel === "ADMIN" && (
+                <>
+                  <SideLink to="/app/tickets">Support Tickets</SideLink>
+                  <SideLink to="/app/my-bookings">Facility Bookings</SideLink>
+                  <SideLink to="/app/timeline">Schedule</SideLink>
+                  <SideLink to="/app/rooms">Rooms</SideLink>
+                  <SideLink to="/app/reminders">Approvals</SideLink>
+                </>
+              )}
+
+              {(roleLabel === "SECRETARY" || roleLabel === "FACILITY_MANAGER") && (
+                <>
+                  <SideLink to="/app/my-bookings">Bookings</SideLink>
+                  <SideLink to="/app/timeline">Schedule</SideLink>
+                  <SideLink to="/app/rooms">Facilities</SideLink>
+                  <SideLink to="/app/reminders">Approvals</SideLink>
+                </>
+              )}
+
+              {(roleLabel === "PM" || roleLabel === "SUPPORT_COORDINATOR") && (
+                <>
+                  <SideLink to="/app/tickets">Tickets Queue</SideLink>
+                  <SideLink to="/app/reminders">Approvals</SideLink>
+                </>
+              )}
+
+              {(roleLabel === "TECHNICIAN" || roleLabel === "DEVELOPER") && (
+                <>
+                  <SideLink to="/app/tickets">My Assigned Work</SideLink>
+                </>
+              )}
+
+              {roleLabel === "HR_MANAGER" && (
+                <>
+                  <SideLink to="/app/reminders">Leave Approvals</SideLink>
+                </>
+              )}
+
+              {(roleLabel === "CLIENT" || roleLabel === "EMPLOYEE" || roleLabel === "USER") && (
+                <>
+                  <SideLink to="/app/tickets">My Tickets</SideLink>
+                  <SideLink to="/app/my-bookings">My Bookings</SideLink>
+                </>
+              )}
             </div>
 
-            {isAdmin ? (
+            {roleLabel === "ADMIN" ? (
               <>
                 <div className="mt-6 px-3 py-2 text-[10px] font-bold tracking-widest uppercase text-[rgb(var(--muted))] border-t border-[rgb(var(--border))]/40">
                   Admin System
@@ -133,6 +170,8 @@ export default function AppShell() {
                 <div className="space-y-1">
                   <SideLink to="/app/admin/schedule">Full Schedule</SideLink>
                   <SideLink to="/app/admin/rooms">Manage Rooms</SideLink>
+                  <SideLink to="/app/admin/activity">Activity Logs</SideLink>
+                  <SideLink to="/app/settings">Settings</SideLink>
                 </div>
               </>
             ) : null}
