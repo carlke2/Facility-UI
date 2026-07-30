@@ -53,6 +53,16 @@ export const authApi = {
     return data;
   },
 
+  async verifyOtp(payload) {
+    const res = await http.post("/auth/verify-otp", payload);
+    return normalizeAuthResponse(res);
+  },
+
+  async googleLogin(payload) {
+    const res = await http.post("/auth/google", payload);
+    return normalizeAuthResponse(res);
+  },
+
 
 
   // request reset link
