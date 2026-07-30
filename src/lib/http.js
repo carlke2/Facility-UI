@@ -1,18 +1,9 @@
 import axios from "axios";
 import { storage } from "./storage";
-
-// This tries to use it if present; otherwise fallback.
-let baseURL = " https://boardroom-exii.onrender.com";
-try {
-  // eslint-disable-next-line global-require
-  const cfg = require("../config");
-  baseURL = cfg?.API_URL || cfg?.BASE_URL || baseURL;
-} catch {
-  // ignore
-}
+import { API_BASE_URL } from "../config";
 
 export const http = axios.create({
-  baseURL,
+  baseURL: API_BASE_URL,
   headers: { "Content-Type": "application/json" },
 });
 
@@ -30,7 +21,19 @@ http.interceptors.request.use((config) => {
 
 // Global 401 handling
 http.interceptors.response.use(
-  (res) => res,
+  (res) => {
+    // Recursively map `id` fields to `_id` to prevent UI card rendering crashes
+    const mapId = (obj) => {
+      if (!obj || typeof obj !== "object") return;
+      if (obj.id && !obj._id) obj._id = obj.id;
+      Object.values(obj).forEach(val => {
+        if (Array.isArray(val)) val.forEach(mapId);
+        else if (typeof val === "object") mapId(val);
+      });
+    };
+    mapId(res.data);
+    return res;
+  },
   (err) => {
     const status = err?.response?.status;
 

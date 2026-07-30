@@ -9,7 +9,7 @@ function buildUrl(path) {
   return API_BASE ? `${API_BASE}${p}` : p;
 }
 
-const BASE = "/api/admin";
+const BASE = "/admin";
 
 async function request(path) {
   const token = storage.getToken();

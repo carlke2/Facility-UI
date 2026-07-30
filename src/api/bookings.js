@@ -19,38 +19,38 @@ function pickFilename(contentDisposition, fallback) {
 
 export const bookingsApi = {
   async create(payload) {
-    const { data } = await http.post("/api/bookings", payload);
+    const { data } = await http.post("/bookings", payload);
     return data;
   },
 
   async mine() {
-    const { data } = await http.get("/api/bookings/mine");
+    const { data } = await http.get("/bookings/mine");
     return data;
   },
 
   async cancel(id) {
-    const { data } = await http.delete(`/api/bookings/${id}`);
+    const { data } = await http.delete(`/bookings/${id}`);
     return data;
   },
 
   //  Admin: list bookings for a range (REAL bookings from Mongo)
   async listAdmin(fromISO, toISO) {
     const { data } = await http.get(
-      `/api/admin/bookings?from=${encodeURIComponent(fromISO)}&to=${encodeURIComponent(toISO)}`
+      `/admin/bookings?from=${encodeURIComponent(fromISO)}&to=${encodeURIComponent(toISO)}`
     );
     return data.bookings || [];
   },
 
   //  Admin: get one booking with populated user/room
   async getOneAdmin(id) {
-    const { data } = await http.get(`/api/admin/bookings/${id}`);
+    const { data } = await http.get(`/admin/bookings/${id}`);
     return data.booking;
   },
 
   //  Admin: export PDF
   async exportPdf(fromISO, toISO) {
     const res = await http.get(
-      `/api/admin/reports/bookings.pdf?from=${encodeURIComponent(fromISO)}&to=${encodeURIComponent(toISO)}`,
+      `/admin/reports/bookings.pdf?from=${encodeURIComponent(fromISO)}&to=${encodeURIComponent(toISO)}`,
       { responseType: "blob" }
     );
 
@@ -64,7 +64,7 @@ export const bookingsApi = {
   //  Admin: export Excel
   async exportExcel(fromISO, toISO) {
     const res = await http.get(
-      `/api/admin/reports/bookings.xlsx?from=${encodeURIComponent(fromISO)}&to=${encodeURIComponent(toISO)}`,
+      `/admin/reports/bookings.xlsx?from=${encodeURIComponent(fromISO)}&to=${encodeURIComponent(toISO)}`,
       { responseType: "blob" }
     );
 
